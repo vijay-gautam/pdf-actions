@@ -1,0 +1,14 @@
+.textwrapper {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* .textwrapper::after{
+    width: auto;
+    height: 30%;
+    position: absolute;
+    bottom: 1;
+    left: 0;
+    background-color: red;
+    z-index: -1;
+
+} */
