@@ -11,7 +11,7 @@ function Body() {
         fontWeight={600}
         fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
       >
-    <Stack direction={"row"} spacing={1}>
+    <Stack direction={"row"} spacing={5} pl={10} >
         <Text
           as={"span"}
           fontFamily="Roboto Condensed"
@@ -39,6 +39,8 @@ function Body() {
             cursorClassName: "textwrapper",
           }}
         />
+        </Stack>
+        <Stack direction={"row"} pl={10} pt={5}>
         <Text
           as={"span"}
           fontFamily="Roboto Condensed"
@@ -54,7 +56,7 @@ function Body() {
             zIndex: -1,
           }}
         >
-          YOUR CHOICE
+          YOUR CHOICE . . .
         </Text>
         </Stack>
       </Heading>

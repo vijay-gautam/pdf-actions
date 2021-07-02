@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <>
-      <Flex p={10} align="center">
+      <Flex p={10} align="center"  bg={useColorModeValue("gray.50", "gray.900")}>
         <Heading as="h1" size="4xl" fontFamily="Roboto Condensed" color={classes.head}>
           Pdf
         </Heading>
