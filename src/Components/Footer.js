@@ -35,26 +35,28 @@ const SocialButton = ({ children, label, href, color }) => {
   );
 };
 
-export default function Footer() {
+export default function Footer({h , w}) {
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
+      h= {h}
+      w={w}
     >
       <Container
         as={Stack}
         maxW={"7xl"}
-        py={4}
+        py={3}
         direction={{ base: "column", md: "row" }}
         spacing={4}
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
         <Text
-          fontSize={25}
+          fontSize={30}
           fontFamily="Roboto Condensed"
           fontWeight="extrabold"
-          color={useColorModeValue("#8520FB", "white")}
+          color={useColorModeValue("black", "white")}
         >
           © 2021 G.V. | All rights reserved
         </Text>

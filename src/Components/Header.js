@@ -11,7 +11,7 @@ import { MoonIcon } from "@chakra-ui/icons";
 import { Heading } from "@chakra-ui/react";
 import { BsSun } from "react-icons/bs";
 
-function Header() {
+function Header({h , w}) {
   const { colorMode, toggleColorMode } = useColorMode();
   const classes = {
     head: useColorModeValue("Red", "Red"),
@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <>
-      <Flex p={10} align="center"  bg={useColorModeValue("gray.50", "gray.900")}>
+      <Flex pl ={10} pr={10} h={h} w={w} align="center"  bg={useColorModeValue("gray.50", "gray.900")}>
         <Heading as="h1" size="4xl" fontFamily="Roboto Condensed" color={classes.head}>
           Pdf
         </Heading>

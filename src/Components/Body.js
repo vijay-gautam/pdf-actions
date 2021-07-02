@@ -1,21 +1,25 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import "../style.css";
-import { Heading, Text, useColorModeValue , Stack} from "@chakra-ui/react";
+import { Heading, Container , Text, useColorModeValue , Stack} from "@chakra-ui/react";
 
-function Body() {
+function Body({h,w}) {
   return (
     <div>
-      <Heading
-        lineHeight={1.1}
-        fontWeight={600}
-        fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
+      <Container
+        h={h}
+        w={w}
+        maxW={'3xl'}
+        maxH={'1xl'}
       >
-    <Stack direction={"row"} spacing={5} pl={10} >
+          <Stack    direction={{ base: "row", md: "row" }}  justify={{ base: "flex-start", md: "space-between" }}
+        align={{ base: "center", md: "center" }} >
         <Text
           as={"span"}
           fontFamily="Roboto Condensed"
           position={"relative"}
+          fontWeight={600}
+          fontSize={{ base: "3xl"}}
           _after={{
             content: "''",
             width: "full",
@@ -27,8 +31,14 @@ function Body() {
             zIndex: -1,
           }}
         >
-          YOUR PDF . YOU CAN
+          YOUR PDF . YOU CAN :  
         </Text>
+        <Text
+          as={"span"}
+          fontWeight={600}
+          fontSize={{ base: "4xl"}}
+          fontFamily="Roboto Condensed"
+          >
         <Typewriter
           options={{
             strings: ["Merge It !", "Sort It !", "Rename It !"],
@@ -39,10 +49,11 @@ function Body() {
             cursorClassName: "textwrapper",
           }}
         />
-        </Stack>
-        <Stack direction={"row"} pl={10} pt={5}>
+        </Text>
         <Text
           as={"span"}
+          fontWeight={600}
+          fontSize={{ base: "3xl"}}
           fontFamily="Roboto Condensed"
           position={"relative"}
           _after={{
@@ -56,10 +67,10 @@ function Body() {
             zIndex: -1,
           }}
         >
-          YOUR CHOICE . . .
+         . . .  YOUR CHOICE . . .
         </Text>
         </Stack>
-      </Heading>
+      </Container>
     </div>
   );
 }
