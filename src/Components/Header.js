@@ -7,9 +7,8 @@ import {
   Spacer,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { MoonIcon } from "@chakra-ui/icons";
 import { Heading } from "@chakra-ui/react";
-import { BsSun } from "react-icons/bs";
+import { BsSun , BsMoon } from "react-icons/bs";
 
 function Header({h , w}) {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -37,7 +36,7 @@ function Header({h , w}) {
               background="transparent"
               borderRadius="10"
               size="lg"
-              icon={<MoonIcon w={6} h={6} color="black" />}
+              icon={<BsMoon size="30px" color="black" />}
             />
           ) : (
             <IconButton

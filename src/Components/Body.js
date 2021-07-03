@@ -11,19 +11,28 @@ import {
   Box,
   Input,
   Button,
+  Icon,
 } from "@chakra-ui/react";
 import FileDragDrop from "./FileDragDrop";
+import OrderView from "./OrderView";
 
 function Body({
-    h,
-    w ,
-    files,
-    mergeFunc ,
-    removeOne ,
-    removeAll,
-    onFilesChange ,
-    onFilesError
+  h,
+  w,
+  files,
+  mergeFunc,
+  removeOne,
+  removeAll,
+  onFilesChange,
+  onFilesError,
+  handleFileName,
+  handleFiles
 }) {
+
+   
+
+
+
   return (
     <>
       <Stack
@@ -52,7 +61,7 @@ function Body({
               position: "absolute",
               bottom: 1,
               left: 0,
-              bg: "red.400",
+              bg: "blue.400",
               zIndex: -1,
             }}
           >
@@ -88,7 +97,7 @@ function Body({
               position: "absolute",
               bottom: 1,
               left: 0,
-              bg: "red.400",
+              bg: "blue.400",
               zIndex: -1,
             }}
           >
@@ -102,12 +111,13 @@ function Body({
           w={"80vw"}
           h={"80%"}
         >
-          <FileDragDrop 
-          onFilesChange={onFilesChange} 
-          onFilesError={onFilesError} />
+          <FileDragDrop
+            onFilesChange={onFilesChange}
+            onFilesError={onFilesError}
+          />
           <Box
             w={"50vw"}
-            h={"50vh"}
+            h={"60vh"}
             //   borderWidth="5px"
             borderColor={useColorModeValue("black", "grey")}
             direction={{ base: "column", md: "column" }}
@@ -117,48 +127,87 @@ function Body({
               justify={{ base: "flex-end", md: "flex-end" }}
               align={{ base: "flex-start", md: "center" }}
             >
-              <Input isInvalid={false}  boxShadow="xl" 
-              focusBorderColor={useColorModeValue('blue.500', 'blue.500')}
-              _placeholder={{ color: useColorModeValue('grey', 'white') }}
-              borderColor = {useColorModeValue("red.400","red.400")}
-              _hover={{ borderColor : useColorModeValue("red.400","red.400")}}
-              placeholder="Merged File Name" size="md" w={"30%"} 
-              borderWidth={"2px"}
-              rounded={"full"} 
-              fontFamily="Roboto Condensed"
+                <Button
+                rounded={"full"}
+                size={"md"}
+                fontWeight={"normal"}
+                px={6}
+                color={useColorModeValue("white", "ehite")}
+                bg={"red.400"}
+                _hover={{ bg: "red.500" }}
+                fontFamily="Roboto Condensed"
+                onClick={removeAll}
+                fontWeight={"semibold"}
+              >
+                CLEAR ALL
+              </Button>
+              <Input
+                // isInvalid={false}
+                boxShadow="xl"
+                focusBorderColor={useColorModeValue("blue.500", "blue.500")}
+                _placeholder={{ color: useColorModeValue("grey", "grey") }}
+                borderColor={useColorModeValue("grey", "white")}
+                _hover={{
+                  borderColor:useColorModeValue("blue.500", "blue.500"),
+                }}
+                placeholder="Merged File Name"
+                size="md"
+                w={"30%"}
+                borderWidth={"2px"}
+                rounded={"full"}
+                fontFamily="Roboto Condensed"
+                onChange={(e) => handleFileName(e.target.value)}
               />
-              
+
               <Button
                 rounded={"full"}
                 size={"lg"}
                 fontWeight={"normal"}
                 px={6}
-                colorScheme={"red"}
-                bg={"red.400"}
-                _hover={{ bg: "red.500" }}
+                color={useColorModeValue("white", "ehite")}
+                bg={"green.400"}
+                _hover={{ bg: "green.500" }}
                 fontFamily="Roboto Condensed"
+                onClick={mergeFunc}
+                fontWeight={"semibold"}
               >
                 MERGE
               </Button>
             </Stack>
             <Stack
               direction={{ base: "row", md: "row" }}
-              justify={{ base: "flex-end", md: "flex-end" }}
+              justify={{ base: "flex-end", md: "center" }}
               align={{ base: "flex-start", md: "center" }}
             >
               <Box
-                w={"40vw"}
-                h={"40vh"}
+                w={"50vw"}
+                h={"50vh"}
                 mt={"2vh"}
                 rounded={"xl"}
                 boxShadow="2xl"
                 bg={useColorModeValue("gray.50", "gray.900")}
                 borderWidth="3px"
-                borderColor={useColorModeValue("", "grey")}
-              >{
-
-              }
-                  
+                borderColor={useColorModeValue("", "grey")} 
+                overflowY="scroll"
+              >
+                {files.length > 0 ? (
+                //   
+                <>
+                <OrderView files={files} handleFiles={handleFiles} removeOne={removeOne}/>
+                </>
+                ) : (
+                <Container centerContent>
+                    <Text
+                        as={"span"}
+                        fontWeight={600}
+                        fontSize={ [ 10 , 40 ]}
+                        fontFamily="Roboto Condensed"
+                        mt={120}
+                    >
+                    no Files
+                    </Text>
+                  </Container>
+                )}
               </Box>
             </Stack>
           </Box>
