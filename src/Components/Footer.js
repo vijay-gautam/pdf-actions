@@ -16,8 +16,8 @@ const SocialButton = ({ children, label, href, color }) => {
       bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
       color={color}
       rounded={"full"}
-      w={8}
-      h={8}
+      w={[4 , 8]}
+      h={[4 ,8] }
       cursor={"pointer"}
       as={"a"}
       href={href}
@@ -46,21 +46,21 @@ export default function Footer({h , w}) {
       <Container
         as={Stack}
         maxW={"7xl"}
-        py={3}
+        py={[4 ,3] }
         direction={{ base: "column", md: "row" }}
-        spacing={4}
+        spacing={[2 ,4 ]}
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
         <Text
-          fontSize={30}
+          fontSize={ [10 , 30 ]}
           fontFamily="Roboto Condensed"
           fontWeight="extrabold"
           color={useColorModeValue("black", "white")}
         >
           © 2021 G.V. | All rights reserved
         </Text>
-        <Stack direction={"row"} spacing={6}>
+        <Stack direction={"row"} spacing={[ 3, 6]}>
           <SocialButton
             label={"Twitter"}
             href={"#"}

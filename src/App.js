@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-    <Flex  direction={{base : "column" , md : "column"}}>
+    <Flex  direction={{base : "column" , md : "column"}} justify={{ base: "flex-start", md: "space-between" }}>
     <Header h={"20vh"} w={"100vw"}/>
     <Body  h={"70vh"} w={"100vw"}  />
      <Footer h={"10vh"} w={"100vw"} />
