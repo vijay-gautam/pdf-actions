@@ -2,16 +2,13 @@ import React from "react";
 import Typewriter from "typewriter-effect";
 import "../style.css";
 import {
-  Heading,
   Container,
   Text,
   useColorModeValue,
   Stack,
-  Flex,
   Box,
   Input,
   Button,
-  Icon,
 } from "@chakra-ui/react";
 import FileDragDrop from "./FileDragDrop";
 import OrderView from "./OrderView";
@@ -130,7 +127,6 @@ function Body({
                 <Button
                 rounded={"full"}
                 size={"md"}
-                fontWeight={"normal"}
                 px={6}
                 color={useColorModeValue("white", "ehite")}
                 bg={"red.400"}
@@ -162,7 +158,6 @@ function Body({
               <Button
                 rounded={"full"}
                 size={"lg"}
-                fontWeight={"normal"}
                 px={6}
                 color={useColorModeValue("white", "ehite")}
                 bg={"green.400"}

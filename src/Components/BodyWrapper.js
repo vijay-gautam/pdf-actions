@@ -1,46 +1,88 @@
-import React , { useState, useEffect } from 'react';
-import Body from './Body';
+import React, { useState } from "react";
+import Body from "./Body";
 import { saveSync } from "save-file";
 import PDFProvider from "../lib/pdfProvider";
 
-function BodyWrapper({h,w}) {
-    const [files, setFiles] = useState([]);
-  const [hasFiles, setHasFiles] = useState(false);
+const path = require("path");
+const fs = require("fs");
+
+function BodyWrapper({ h, w }) {
+  const [files, setFiles] = useState([]);
   const [finalName, setFinalName] = useState("");
 
 
+  const handleFiles = (data) => {
+    setFiles(data);
+  };
+
+  const handleFinalName = (data) => {
+    setFinalName(data);
+  };
+
+  const onLoadFileChecker = (data) => {
+    if (data.length > 0 ) {
+      let temp = data.filter(function( element ) {
+        return element !== undefined;
+     });
+     if (temp.length === data.length) {
+        return true
+     } else {
+       return false
+     }
+    }
+  }
 
   const onFilesChange = (file) => {
-    setFiles([...files, file]);
-    setHasFiles(files.length > 0 ? true : false);
+    let temp = onLoadFileChecker(file);
+    if (temp) {
+      if (file.length > 1) {
+        let newFiles = files.concat(file);
+        setFiles(newFiles);
+      } else {
+        let temp = file[0];
+        setFiles([...files, temp]);
+      }
+    }
   };
 
   const onFilesError = (error, file) => {
     console.log("[LOG] Error code " + error.code + ": " + error.message);
   };
 
-  // const filesRemoveOne = (file) => {
-  //     setFiles(files.filter((value) => {
-  //         value !== file
-  //     }))
-  // }
+  const filesRemoveOne = (file) => {
+    let temp = files.filter((value) => value.name !== file);
+    if (temp.length === 0) {
+      setFiles([]);
+    } else {
+      setFiles(temp);
+    }
+  };
 
   const filesRemoveAll = () => {
     setFiles([]);
-    setHasFiles(false);
   };
 
-
-
-  const startMerge = (nof) => {
+  const startMerge = () => {
     let tempMsg;
     PDFProvider.mergeBetweenPDF(files)
       .then((res) => {
-        // console.log(res)
         if (res && res.hasOwnProperty("pdfFile")) {
           if (res.pdfFile) {
             if (res.pdfNotMergedList.length !== files.length) {
-              let fileName = nof;
+              let fileName = "";
+              if (finalName === "") {
+                fileName =
+                  "output_merge_" +
+                  new Date()
+                    .toISOString()
+                    .replace(":", "_")
+                    .replace("T", "_")
+                    .replace("Z", "") +
+                  ".pdf";
+              } else {
+                fileName = `${finalName}.pdf`;
+              }
+
               saveSync(res.pdfFile, fileName);
             }
 
@@ -59,54 +101,15 @@ function BodyWrapper({h,w}) {
               }
 
               console.log("[LOG] " + tempMsg);
-              // this.setState(
-              //   {
-              //     modalOpen: true,
-              //     modalLoading: false,
-              //     modalMsg: {
-              //       err: tempMsg,
-              //       success: null,
-              //     },
-              //   },
-              //   () => {
-              //     console.log("[LOG] Modal closed.");
-              //   }
-              // );
             } else {
               tempMsg = "Merge totally successfull and downloaded!";
               console.log("[LOG] " + tempMsg);
-              // this.setState(
-              //   {
-              //     modalOpen: true,
-              //     modalLoading: false,
-              //     modalMsg: {
-              //       err: null,
-              //       success: tempMsg,
-              //     },
-              //   },
-              //   () => {
-              //     console.log("[LOG] Closed modal");
-              //   }
-              // );
             }
           }
         } else {
           tempMsg =
             "Internal error at merging! Send this error to the developer in charge.";
           console.log(tempMsg);
-          // this.setState(
-          //   {
-          //     modalOpen: true,
-          //     modalLoading: false,
-          //     modalMsg: {
-          //       err: tempMsg,
-          //       success: null,
-          //     },
-          //   },
-          //   () => {
-          //     console.log("[LOG] Closed modal");
-          //   }
-          // );
         }
       })
       .catch((err) => {
@@ -115,32 +118,34 @@ function BodyWrapper({h,w}) {
       .finally(() => filesRemoveAll());
   };
 
-  const handleCondMerge = () => {
-      if (finalName !== "") {
-        startMerge(finalName);
-      } else  {
-        const fileName = "output_merge_" + new Date().toISOString().replace(":","_").replace("T","_").replace("Z","") + ".pdf";
-        startMerge(fileName);
-      }
-  }
+  
 
-    return (
-        <>
-            <Body 
-            h={h}
-            w={w}
-            files = {files}
-            mergeFunc = {handleCondMerge}
-            // removeOne = {filesRemoveOne}
-            removeAll = {filesRemoveAll}
-            onFilesChange = {onFilesChange}
-            onFilesError={onFilesError}
-            />
-        </>
-    )
+  const handleCondMerge = () => {
+    startMerge();
+  };
+
+  const handleFileName = (name) => {
+    setFinalName(name);
+  };
+
+  return (
+    <>
+      <Body
+        h={h}
+        w={w}
+        files={files}
+        mergeFunc={handleCondMerge}
+        removeOne={filesRemoveOne}
+        removeAll={filesRemoveAll}
+        onFilesChange={onFilesChange}
+        onFilesError={onFilesError}
+        handleFileName={handleFileName}
+        handleFiles={handleFiles}
+        finalName={finalName}
+        handleFinalName={handleFinalName}
+      />
+    </>
+  );
 }
 
-export default BodyWrapper
-
-    
-
+export default BodyWrapper;

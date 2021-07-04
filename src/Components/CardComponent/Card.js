@@ -1,14 +1,24 @@
 import React from 'react'
 import { SortableElement } from 'react-sortable-hoc';
-import { Box , Text , CloseButton , Stack } from "@chakra-ui/react"; 
+import { Box , Text , CloseButton , Stack , Tooltip } from "@chakra-ui/react"; 
 const Card = SortableElement(props => {
+
+    const remove = () => {
+        props.removeOne(props.data.name);
+    }
     return (
-        <div>
+        <>
+              <Tooltip
+               hasArrow
+          label={props.data.sizeReadable}
+          aria-label="A tooltip"
+          placement="top"
+        >
             <Box  borderColor={"red"}  borderWidth="2px"   borderStyle="dashed" p={4} borderRadius="10px">
                 <Stack align="flex-end"> 
             <CloseButton 
             color="black"
-            onClick={props.removeOne(props.data)}
+            onClick={remove}
                 />
                 </Stack>
             <Text 
@@ -21,7 +31,8 @@ const Card = SortableElement(props => {
             {props.data.name}
             </Text>
             </Box>
-        </div>
+            </Tooltip>
+        </>
     );
 });
 

@@ -12,7 +12,7 @@
     "@testing-library/user-event": "^12.8.3",
     "array-move": "^3.0.1",
     "framer-motion": "^4.1.17",
-    "pdf-lib": "^1.16.0",
+    "pdf-lib": "^0.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-files": "^3.0.0-alpha.1",

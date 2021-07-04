@@ -2,9 +2,7 @@ import React from "react";
 import Header from "./Components/Header";
 import BodyWrapper from "./Components/BodyWrapper";
 import Footer from "./Components/Footer"
-import {Flex,
-  Spacer,
-  useColorModeValue,
+import {Flex
 } from "@chakra-ui/react";
 
 function App() {

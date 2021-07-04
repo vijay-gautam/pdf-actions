@@ -1,7 +1,7 @@
 import React from "react";
 
 import Files from "react-files";
-import { Box, Stack, IconButton , Text , useColorModeValue, Center ,Flex } from "@chakra-ui/react";
+import { Box,  IconButton , Text , useColorModeValue, Flex } from "@chakra-ui/react";
 import { FcUpload } from "react-icons/fc";
 function FileDragDrop({ onFilesChange, onFilesError }) {
   return (
