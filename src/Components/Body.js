@@ -32,6 +32,7 @@ function Body({
   const handleMerge = () => {
     mergeFunc();
     setValue("");
+    handleFileName("");
   }
 
   return (
