@@ -9,6 +9,7 @@ import {
   Box,
   Input,
   Button,
+  useControllableState
 } from "@chakra-ui/react";
 import FileDragDrop from "./FileDragDrop";
 import OrderView from "./OrderView";
@@ -26,9 +27,12 @@ function Body({
   handleFiles
 }) {
 
-   
+  const [value, setValue] = useControllableState({ defaultValue: "" })
 
-
+  const handleMerge = () => {
+    mergeFunc();
+    setValue("");
+  }
 
   return (
     <>
@@ -152,7 +156,12 @@ function Body({
                 borderWidth={"2px"}
                 rounded={"full"}
                 fontFamily="Roboto Condensed"
-                onChange={(e) => handleFileName(e.target.value)}
+                onChange={(e) => {
+                  handleFileName(e.target.value)
+                  setValue(e.target.value)
+                }
+              }
+                value={value}
               />
 
               <Button
@@ -163,7 +172,7 @@ function Body({
                 bg={"green.400"}
                 _hover={{ bg: "green.500" }}
                 fontFamily="Roboto Condensed"
-                onClick={mergeFunc}
+                onClick={handleMerge}
                 fontWeight={"semibold"}
               >
                 MERGE
