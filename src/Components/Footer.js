@@ -65,7 +65,7 @@ export default function Footer({h , w}) {
             href={"#"}
             color={useColorModeValue("#00acee", "#00acee")}
           >
-            <Link href="https://https://twitter.com/GautamV66119072" isExternal>
+            <Link href="https://twitter.com/GautamV66119072" isExternal>
               <FaTwitter />
             </Link>
           </SocialButton>
