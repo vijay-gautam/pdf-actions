@@ -3,8 +3,6 @@ import Body from "./Body";
 import { saveSync } from "save-file";
 import PDFProvider from "../lib/pdfProvider";
 
-const path = require("path");
-const fs = require("fs");
 
 function BodyWrapper({ h, w }) {
   const [files, setFiles] = useState([]);
@@ -15,9 +13,6 @@ function BodyWrapper({ h, w }) {
     setFiles(data);
   };
 
-  const handleFinalName = (data) => {
-    setFinalName(data);
-  };
 
   const onLoadFileChecker = (data) => {
     if (data.length > 0 ) {
@@ -141,8 +136,8 @@ function BodyWrapper({ h, w }) {
         onFilesError={onFilesError}
         handleFileName={handleFileName}
         handleFiles={handleFiles}
-        finalName={finalName}
-        handleFinalName={handleFinalName}
+        // finalName={finalName}
+        // handleFinalName={handleFinalName}
       />
     </>
   );

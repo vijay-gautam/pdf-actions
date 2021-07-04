@@ -13,7 +13,7 @@ function FileDragDrop({ onFilesChange, onFilesError }) {
         accepts={[".pdf"]}
         multiple
         maxFiles={1000}
-        maxFileSize={10000000}
+        maxFileSize={100000000000}
         minFileSize={0}
         clickable
       >

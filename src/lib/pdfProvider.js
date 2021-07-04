@@ -35,6 +35,7 @@ let returnObj = { pdfFile: null, pdfNotMergedList: [] }
 					iterPdfDocPages = iterPdfDoc.getPages();
 					iterPdfDoc = PDFDocumentFactory.create();
 					// Add each page in a temp file to check if all pages from this PDF can be added in the final one
+					// eslint-disable-next-line
 					iterPdfDocPages.forEach((pdfPage) => {
 						iterPdfDoc.addPage(pdfPage);
 					});
@@ -61,6 +62,7 @@ let returnObj = { pdfFile: null, pdfNotMergedList: [] }
     }
 }
 
+	// eslint-disable-next-line
 export default {
 	mergeBetweenPDF
 }

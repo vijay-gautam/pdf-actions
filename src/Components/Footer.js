@@ -65,12 +65,12 @@ export default function Footer({h , w}) {
             href={"#"}
             color={useColorModeValue("#00acee", "#00acee")}
           >
-            <Link href="https://chakra-ui.com" isExternal>
+            <Link href="https://https://twitter.com/GautamV66119072" isExternal>
               <FaTwitter />
             </Link>
           </SocialButton>
           <SocialButton label={"Github"}>
-            <Link href="https://chakra-ui.com" isExternal>
+            <Link href="https://github.com/vijay-gautam" isExternal>
               <FaGithub />
             </Link>
           </SocialButton>
@@ -78,7 +78,7 @@ export default function Footer({h , w}) {
             label={"Linkedin"}
             color={useColorModeValue("#0077b5", "#0077b5")}
           >
-            <Link href="https://chakra-ui.com" isExternal>
+            <Link href="https://www.linkedin.com/in/gautamvijay-07/" isExternal>
               <FaLinkedin />
             </Link>
           </SocialButton>

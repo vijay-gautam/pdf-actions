@@ -193,6 +193,16 @@ function Body({
                 borderWidth="3px"
                 borderColor={useColorModeValue("", "grey")} 
                 overflowY="scroll"
+                sx={{
+                  '&::-webkit-scrollbar': {
+                    width: '16px',
+                    borderRadius: '8px',
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                  },
+                  '&::-webkit-scrollbar-thumb': {
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                  },
+                }}
               >
                 {files.length > 0 ? (
                 //   

@@ -1,6 +1,6 @@
 import React from 'react'
 import { SortableElement } from 'react-sortable-hoc';
-import { Box , Text , CloseButton , Stack , Tooltip } from "@chakra-ui/react"; 
+import { Box , Text , CloseButton , Stack , Tooltip , useColorModeValue } from "@chakra-ui/react"; 
 const Card = SortableElement(props => {
 
     const remove = () => {
@@ -14,10 +14,12 @@ const Card = SortableElement(props => {
           aria-label="A tooltip"
           placement="top"
         >
-            <Box  borderColor={"red"}  borderWidth="2px"   borderStyle="dashed" p={4} borderRadius="10px">
+            <Box  borderColor={useColorModeValue("red","white")}  borderWidth="2px"   borderStyle="dashed" p={4} borderRadius="10px"  
+            bg={useColorModeValue("red.200", "red.500")}>
                 <Stack align="flex-end"> 
             <CloseButton 
-            color="black"
+            color={useColorModeValue("black", "white")}
+            size="sm"
             onClick={remove}
                 />
                 </Stack>
