@@ -1,4 +1,4 @@
-#  PDF Actions React App
+# PDF Action React and NEXT App
 
 Simple ReactJS serverless application that currently merges the PDFs.
 
